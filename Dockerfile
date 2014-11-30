@@ -1,4 +1,4 @@
-FROM drupalwxt/apache-php:latest
+FROM drupalwxt/docker-apache-php:latest
 MAINTAINER William Hearn <sylus1984@gmail.com>
 
 # Install packages
