@@ -21,13 +21,13 @@ RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
 RUN ln -s /usr/local/bin/composer /usr/bin/composer
 RUN git clone https://github.com/drush-ops/drush.git /usr/local/src/drush
-RUN cd /usr/local/src/drush
-RUN git checkout 6.5.0
-RUN ln -s /usr/local/src/drush/drush /usr/bin/drush
-RUN composer install
-RUN drush --version
+RUN cd /usr/local/src/drush && \
+    git checkout 6.5.0 && \
+    ln -s /usr/local/src/drush/drush /usr/bin/drush && \
+    composer install && \
+    drush --version
 
-#Config and set permissions for setting.php
+# Config and set permissions for setting.php
 RUN cp app/sites/default/default.settings.php app/sites/default/settings.php && \
     chmod a+w app/sites/default/settings.php && \
     chmod a+w app/sites/default
