@@ -32,6 +32,9 @@ RUN cp app/sites/default/default.settings.php app/sites/default/settings.php && 
     chmod a+w app/sites/default/settings.php && \
     chmod a+w app/sites/default
 
+# Scripts
+ADD ./bootstrap.sh /bootstrap.sh
+
 EXPOSE 80
 
-CMD exec supervisord -n
+CMD ["/bin/bash", "/bootstrap.sh"]
