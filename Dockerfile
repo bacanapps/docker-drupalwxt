@@ -28,8 +28,7 @@ RUN cd /usr/local/src/drush && \
     drush --version
 
 # Config and set permissions for setting.php
-RUN cp app/sites/default/default.settings.php app/sites/default/settings.php && \
-    chmod a+w app/sites/default/settings.php && \
+RUN chmod a+w app/sites/default/settings.php && \
     chmod a+w app/sites/default && \
     mkdir app/sites/default/files && \
     chown -R www-data:www-data app/
@@ -40,4 +39,5 @@ RUN chmod 755 /bootstrap.sh
 
 EXPOSE 80
 
+# Run Time
 CMD ["/bin/bash", "/bootstrap.sh"]
