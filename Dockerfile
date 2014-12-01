@@ -28,8 +28,7 @@ RUN cd /usr/local/src/drush && \
     drush --version
 
 # Config and set permissions for setting.php
-RUN chmod a+w app/sites/default/settings.php && \
-    chmod a+w app/sites/default && \
+RUN chmod a+w app/sites/default && \
     mkdir app/sites/default/files && \
     chown -R www-data:www-data app/
 
