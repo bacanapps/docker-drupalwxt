@@ -30,7 +30,9 @@ RUN cd /usr/local/src/drush && \
 # Config and set permissions for setting.php
 RUN cp app/sites/default/default.settings.php app/sites/default/settings.php && \
     chmod a+w app/sites/default/settings.php && \
-    chmod a+w app/sites/default
+    chmod a+w app/sites/default && \
+    mkdir app/sites/default/files && \
+    chown -R www-data:www-data app/
 
 # Scripts
 ADD ./bootstrap.sh /bootstrap.sh
