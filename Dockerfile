@@ -36,6 +36,7 @@ RUN cp app/sites/default/default.settings.php app/sites/default/settings.php && 
 
 # Scripts
 ADD ./bootstrap.sh /bootstrap.sh
+RUN chmod 755 /bootstrap.sh
 
 EXPOSE 80
 
