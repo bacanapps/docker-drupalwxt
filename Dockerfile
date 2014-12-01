@@ -16,6 +16,12 @@ RUN rm -fr /app && mkdir /app && cd /app && \
   mv wetkit-7.x-2.x-dev/.gitignore ./ && \
   rmdir wetkit-7.x-2.x-dev
 
+# Install composer and drush
+RUN curl -sS https://getcomposer.org/installer | php
+RUN mv composer.phar /usr/local/bin/composer
+RUN composer global require drush/drush:6.*
+RUN ln -sf /.composer/vendor/drush/drush/drush /usr/bin/drush
+
 #Config and set permissions for setting.php
 RUN cp app/sites/default/default.settings.php app/sites/default/settings.php && \
     chmod a+w app/sites/default/settings.php && \
