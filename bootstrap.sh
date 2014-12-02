@@ -1,8 +1,8 @@
 #!/bin/bash
 if [ ! -f app/sites/default/settings.php ]; then
   # Apache Settings
-  sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/sites-available/default
-  a2enmod rewrite vhost_alias
+  # sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/sites-available/default
+  # a2enmod rewrite vhost_alias
 
   # Install Drupal WxT
   cd app
