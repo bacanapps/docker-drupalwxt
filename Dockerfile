@@ -14,7 +14,15 @@ RUN rm -fr /app && mkdir /app && cd /app && \
   rm wetkit-7.x-2.x-dev-core.tar.gz && \
   mv wetkit-7.x-2.x-dev/* wetkit-7.x-2.x-dev/.htaccess ./ && \
   mv wetkit-7.x-2.x-dev/.gitignore ./ && \
-  rmdir wetkit-7.x-2.x-dev
+  rmdir wetkit-7.x-2.x-dev && \
+  find ./profiles/wetkit/libraries/wet-boew* -name "*.html" -type f | xargs rm -f && \
+  find ./profiles/wetkit/libraries/quail -name "*.rst" -type f | xargs rm -f && \
+  find ./profiles/wetkit/libraries/quail/test/testfiles -name "*.html" -type f | xargs rm -f
+
+# Apply some patches
+RUN cd /app && \
+  curl https://www.drupal.org/files/drupal-1081266-102-drupal_get_filename-D7.patch | patch -p1
+  curl https://www.drupal.org/files/issues/2383823-check_name_empty-1.patch | patch -p1
 
 # Install composer and drush
 RUN curl -sS https://getcomposer.org/installer | php
@@ -32,11 +40,4 @@ RUN chmod a+w app/sites/default && \
     mkdir app/sites/default/files && \
     chown -R www-data:www-data app/
 
-# Scripts
-ADD ./bootstrap.sh /bootstrap.sh
-RUN chmod 755 /bootstrap.sh
-
 EXPOSE 80
-
-# Run Time
-# CMD ["/bin/bash", "/bootstrap.sh"]
