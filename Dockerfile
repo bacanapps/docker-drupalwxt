@@ -39,4 +39,4 @@ RUN chmod 755 /bootstrap.sh
 EXPOSE 80
 
 # Run Time
-CMD ["/bin/bash", "/bootstrap.sh"]
+# CMD ["/bin/bash", "/bootstrap.sh"]
